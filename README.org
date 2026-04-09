@@ -1,0 +1,8 @@
+* Overview
+
+This is a clone of Geometry Dash in the Unity Engine. This is the final project for my 382 Game Development Class
+
+** Controls
+
+Press spacebar to jump, you will automatically move when the level starts up. The game
+requires good reaction time. Spikes will send you to a game over screen
