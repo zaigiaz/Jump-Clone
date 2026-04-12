@@ -4,7 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed = 8f;
-    public float jumpForce = 10f;
+    public float jumpForce = 15f;
 
     [Header("Double Jump")]
     public int doubleJumpAvailable = 0;
@@ -38,13 +38,11 @@ public class PlayerController : MonoBehaviour
     void CheckGround()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position + Vector3.down * 0.5f, Vector3.down, out hit, 0.1f))
+        float groundDistance = 1.0f;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, groundDistance))
         {
-            if (!isGrounded)
-            {
-                isGrounded = true;
-                jumpsRemaining = 1 + doubleJumpAvailable;
-            }
+            isGrounded = true;
+            jumpsRemaining = 1 + doubleJumpAvailable;
         }
         else
         {
