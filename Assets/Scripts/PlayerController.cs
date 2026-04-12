@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed = 8f;
     public float jumpForce = 15f;
+    public float gravityMultiplier = 2f;
 
     [Header("Double Jump")]
     public int doubleJumpAvailable = 0;
@@ -33,6 +34,12 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         rb.velocity = new Vector3(moveSpeed, rb.velocity.y, 0);
+        
+        // Apply extra gravity
+        if (!isGrounded)
+        {
+            rb.AddForce(Physics.gravity * (gravityMultiplier - 1), ForceMode.Acceleration);
+        }
     }
 
     void CheckGround()
