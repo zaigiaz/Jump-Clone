@@ -33,7 +33,10 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.velocity = new Vector3(moveSpeed, rb.velocity.y, 0);
+        // Use MovePosition for physics-safe movement that respects collisions
+        float moveDistance = moveSpeed * Time.fixedDeltaTime;
+        Vector3 targetPosition = rb.position + new Vector3(moveDistance, 0, 0);
+        rb.MovePosition(targetPosition);
         
         // Apply extra gravity
         if (!isGrounded)

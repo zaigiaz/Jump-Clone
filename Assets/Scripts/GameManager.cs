@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public int currentLevelIndex = 0;
     public int lives = 2;
     public int[] levelSceneIndices = { 1, 2, 3 };
+    public string gameOverSceneName = "GameOver";
 
     void Awake()
     {
@@ -57,7 +58,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        UIManager.Instance.ShowGameOver();
+        SceneManager.LoadScene(gameOverSceneName);
     }
 
     public void Victory()
