@@ -114,7 +114,7 @@ MonoBehaviour:
   moveSpeed: 9
   jumpForce: 13
   gravityMultiplier: 3
-  doubleJumpAvailable: 4
+  doubleJumpAvailable: 2
 --- !u!54 &841583967
 Rigidbody:
   m_ObjectHideFlags: 0
