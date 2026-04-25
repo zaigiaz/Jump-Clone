@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public int lives = 2;
     public string[] levelSceneNames = { "_Scene_0", "_Scene_1", "_Scene_2" };
     public string gameOverSceneName = "GameOver";
+    public string victorySceneName = "Victory";
 
     void Awake()
     {
@@ -63,7 +64,7 @@ public class GameManager : MonoBehaviour
 
     public void Victory()
     {
-        UIManager.Instance.ShowVictory();
+        SceneManager.LoadScene(victorySceneName);
     }
 
     public void RestartGame()
@@ -77,6 +78,6 @@ public class GameManager : MonoBehaviour
     {
         currentLevelIndex = 0;
         lives = 2;
-        SceneManager.LoadScene("_Scene_1");
+        SceneManager.LoadScene("_Scene_0");
     }
 }
