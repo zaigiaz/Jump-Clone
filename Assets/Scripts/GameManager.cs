@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 
     public int currentLevelIndex = 0;
     public int lives = 2;
-    public int[] levelSceneIndices = { 1, 2, 3 };
+    public string[] levelSceneNames = { "_Scene_0", "_Scene_1", "_Scene_2" };
     public string gameOverSceneName = "GameOver";
 
     void Awake()
@@ -39,20 +39,20 @@ public class GameManager : MonoBehaviour
 
     public void ReloadCurrentLevel()
     {
-        SceneManager.LoadScene(levelSceneIndices[currentLevelIndex]);
+        SceneManager.LoadScene(levelSceneNames[currentLevelIndex]);
     }
 
     public void LevelComplete()
     {
         currentLevelIndex++;
         
-        if (currentLevelIndex >= levelSceneIndices.Length)
+        if (currentLevelIndex >= levelSceneNames.Length)
         {
             Victory();
         }
         else
         {
-            SceneManager.LoadScene(levelSceneIndices[currentLevelIndex]);
+            SceneManager.LoadScene(levelSceneNames[currentLevelIndex]);
         }
     }
 
@@ -70,13 +70,13 @@ public class GameManager : MonoBehaviour
     {
         currentLevelIndex = 0;
         lives = 2;
-        SceneManager.LoadScene(levelSceneIndices[0]);
+        SceneManager.LoadScene(levelSceneNames[0]);
     }
 
     public void FullReset()
     {
         currentLevelIndex = 0;
         lives = 2;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("_Scene_1");
     }
 }

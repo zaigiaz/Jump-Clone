@@ -1,6 +1,6 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
 
     public GameObject gameOverPanel;
     public GameObject victoryPanel;
-    public Text livesText;
+    public TMP_Text livesText;
 
     void Awake()
     {
@@ -16,10 +16,30 @@ public class UIManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (gameOverPanel != null)
+            gameOverPanel.SetActive(false);
+        if (victoryPanel != null)
+            victoryPanel.SetActive(false);
+
+        livesText = null;
+        var texts = FindObjectsOfType<TMP_Text>();
+        foreach (var t in texts)
+        {
+            if (t.name == "LivesText")
+            {
+                livesText = t;
+                break;
+            }
         }
     }
 
@@ -49,13 +69,15 @@ public class UIManager : MonoBehaviour
 
     public void RestartFromGameOver()
     {
-        gameOverPanel.SetActive(false);
+        if (gameOverPanel != null)
+            gameOverPanel.SetActive(false);
         GameManager.Instance.FullReset();
     }
 
     public void RestartFromVictory()
     {
-        victoryPanel.SetActive(false);
+        if (victoryPanel != null)
+            victoryPanel.SetActive(false);
         GameManager.Instance.FullReset();
     }
 
