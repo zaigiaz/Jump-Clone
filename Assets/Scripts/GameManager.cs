@@ -17,10 +17,31 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            currentLevelIndex = 0;
+            lives = 2;
         }
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "_Scene_0")
+        {
+            currentLevelIndex = 0;
+            lives = 2;
         }
     }
 
