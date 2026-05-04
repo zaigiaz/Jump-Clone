@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 
     public int currentLevelIndex = 0;
     public int lives = 2;
-    public string[] levelSceneNames = { "_Scene_0", "_Scene_1", "_Scene_2", "_Scene_3" };
+    public string[] levelSceneNames = { "_Scene_0", "_Scene_1", "_Scene_2", "_Scene_3", "_Scene_4" };
     public string gameOverSceneName = "GameOver";
     public string victorySceneName = "Victory";
 
